@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form [formGroup]="userForm" (ngSubmit)=save(userForm.value)>
+                <div formGroupName="UserLogin">
+                    <div class="form-group">
+                        <input type="text"  class="form-control" placeholder="Enter User Name"
+                        formControlName="UserName"
+                            [class.is-invalid]="!userForm.controls.UserLogin.controls.UserName.valid && (submitted || userForm.controls.UserLogin.controls.UserName.touched)"
+                            [class.is-valid]="userForm.controls.UserLogin.controls.UserName.valid"
+                        >
+                        <div class="alert alert-danger"
+                            *ngIf="userForm.controls.UserLogin.controls.UserName.hasError('required')
+                            && (submitted || userForm.controls.UserLogin.controls.UserName.touched )
+                            "
+                        >
+                        username is required *
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text"  class="form-control" placeholder="Enter Password"
+                        formControlName="Password"
+                            [class.is-invalid]="!userForm.controls.UserLogin.controls.Password.valid && (submitted || userForm.controls.UserLogin.controls.Password.touched)"
+                            [class.is-valid]="userForm.controls.UserLogin.controls.Password.valid"
+                        >
+                        <div class="alert alert-danger"
+                            *ngIf="userForm.controls.UserLogin.controls.Password.hasError('required')
+                            && (submitted || userForm.controls.UserLogin.controls.Password.touched)
+                            "
+                        >
+                        password is required *
+                        </div>
+                </div>
+            </div>
+                <button type="submit" class="btn btn-primary"  >Submit</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
