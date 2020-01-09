@@ -19,7 +19,7 @@ export class Register{
 
     }
     userLogin(data:Ilogin){
-        return this.http.post(this.url, JSON.stringify(data),{headers:this.headers});
+        return this.http.post(this.urlLogin, JSON.stringify(data),{headers:this.headers});
 
     }
 }

@@ -2,7 +2,6 @@ import { Iregister } from './../shared/model/reg.interface';
 import { Component, OnInit } from '@angular/core';
 import{ Validators, FormGroup, FormBuilder} from  "@angular/forms"
 import { Regx } from './regex';
-import {Iregister} from '../shared/model/reg.interface';
 import { Register } from '../shared/model/register.services';
 
 @Component({

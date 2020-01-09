@@ -2,6 +2,7 @@ import { Ilogin } from './../shared/model/reg.interface';
 import { Component, OnInit } from '@angular/core';
 import{ Validators, FormGroup, FormBuilder} from  "@angular/forms";
 import {Iregister} from '../shared/model/reg.interface';
+import { Register } from '../shared/model/register.services';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   public userForm:FormGroup;
   public submitted: boolean = false;
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder ,private userreg:Register) { }
 
   ngOnInit() {
     this.userForm=this.fb.group({
@@ -26,14 +27,10 @@ export class LoginComponent implements OnInit {
   save(data:Ilogin){
     this.submitted = true;
     if (this.userForm.valid) {
-      console.log('form submitted');
-      alert("dsf")
-    alert(data)
-    console.log(data);
-    } else {
-      // validate all form fields
-    }
-    
-  }
+      this.userreg.userLogin(data).subscribe((item:any)=>{ console.log(item)})
+       
+          alert("done")
 
+    } 
+  }
 }
