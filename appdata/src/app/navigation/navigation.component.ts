@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Register } from '../shared/model/register.services';
+
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor( private userreg:Register) { }
 
   ngOnInit() {
+  }
+
+  logout(){
+
+    this.userreg.logout();
   }
 
 }

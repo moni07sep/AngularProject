@@ -1,7 +1,7 @@
 import { Iregister, Ilogin } from './reg.interface';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({providedIn:"root"})
 
@@ -19,7 +19,18 @@ export class Register{
 
     }
     userLogin(data:Ilogin){
-        return this.http.post(this.urlLogin, JSON.stringify(data),{headers:this.headers});
+        return this.http.post(this.urlLogin, JSON.stringify(data),{headers:this.headers})
+            .pipe(map((item:any)=>{
+                if(item && item.UserLogin.JwtToken){
+                    localStorage.setItem("currentUser", JSON.stringify(item))
+                }else{
+                    return item;
+                }
 
+            }))
+
+    }
+    logout(){
+        localStorage.removeItem("currentUser");
     }
 }
