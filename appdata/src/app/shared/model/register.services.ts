@@ -13,7 +13,7 @@ export class Register{
     public headers;
 
     private loggedIn :BehaviorSubject<any>;
-    private userData :Observable<any>
+    public userData :Observable<any>
 
 
     private url="http://mobile.test.acorsociety.com/ideators/api/users/userregistrationasync";

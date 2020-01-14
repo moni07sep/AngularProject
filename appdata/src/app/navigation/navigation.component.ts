@@ -9,9 +9,16 @@ import { Register } from '../shared/model/register.services';
 })
 export class NavigationComponent implements OnInit {
 
+  public currentUserData
   constructor( private userreg:Register) { }
 
+
   ngOnInit() {
+
+    this.userreg.userData.subscribe(x=>{this.currentUserData=x;
+    console.log(this.currentUserData);
+    })
+
   }
 
   logout(){
